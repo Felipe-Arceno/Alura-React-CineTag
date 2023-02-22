@@ -1,16 +1,16 @@
 import { Fragment } from "react";
 import Banner from "components/Banner";
 import Title from "components/Title";
-import Card from "components/Card";
+import styles from "./Favorites.module.css";
 import videos from "json/db.json";
-import styles from "./Home.module.css";
+import Card from "components/Card";
 
-const Home = () => {
+const Favorites = () => {
   return (
     <Fragment>
-      <Banner image="Home" />
+      <Banner image="Favorites" />
       <Title>
-        <h1>Um lugar para guardar seus videos e filmes!</h1>
+        <h1>Meus Favoritos</h1>
       </Title>
 
       <section className={styles.container}>
@@ -22,4 +22,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Favorites;
