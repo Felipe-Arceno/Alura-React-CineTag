@@ -1,4 +1,5 @@
 import { useFavoriteContext } from "contextos/Favorites";
+import { Link } from "react-router-dom";
 import styles from "./Card.module.css";
 import iconHeartFilled from "./iconHeartFilled.png";
 import iconHeart from "./iconHeartNotFilled.png";
@@ -10,8 +11,11 @@ const Card = ({ id, title, cover }) => {
 
   return (
     <div className={styles.container}>
-      <img src={cover} alt={title} className={styles.cover} />
-      <h2>{title}</h2>
+      <Link className={styles.link} to={`/${id}`}>
+        <img src={cover} alt={title} className={styles.cover} />
+        <h2>{title}</h2>
+      </Link>
+
       <img
         src={icon}
         alt="Favoritar Filme"

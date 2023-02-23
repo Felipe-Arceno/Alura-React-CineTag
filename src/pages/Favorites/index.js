@@ -4,8 +4,11 @@ import Title from "components/Title";
 import styles from "./Favorites.module.css";
 import videos from "json/db.json";
 import Card from "components/Card";
+import { useFavoriteContext } from "contextos/Favorites";
 
 const Favorites = () => {
+  const { favorite } = useFavoriteContext();
+
   return (
     <Fragment>
       <Banner image="Favorites" />
@@ -14,8 +17,8 @@ const Favorites = () => {
       </Title>
 
       <section className={styles.container}>
-        {videos.map((video) => {
-          return <Card {...video} key={video.id} />;
+        {favorite.map((fav) => {
+          return <Card {...fav} key={fav.id} />;
         })}
       </section>
     </Fragment>
