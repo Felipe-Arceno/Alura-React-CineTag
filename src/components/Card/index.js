@@ -11,7 +11,7 @@ const Card = ({ id, title, cover }) => {
 
   return (
     <div className={styles.container}>
-      <Link className={styles.link} to={`/${id}`}>
+      <Link className={styles.link} to={`Videos/${id}`}>
         <img src={cover} alt={title} className={styles.cover} />
         <h2>{title}</h2>
       </Link>

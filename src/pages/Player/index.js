@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import { useParams } from "react-router-dom";
 import videos from "json/db.json";
 import styles from "./Player.module.css";
+import NotFound from "pages/NotFound";
 
 const Player = () => {
   const params = useParams();
@@ -11,7 +12,10 @@ const Player = () => {
     return vid.id === Number(params.id);
   });
 
-  console.log(video);
+  if (!video) {
+    return <NotFound />;
+  }
+
   return (
     <Fragment>
       <Banner image="Player" />
