@@ -1,16 +1,23 @@
 import Banner from "components/Banner";
 import Title from "components/Title";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import videos from "json/db.json";
 import styles from "./Player.module.css";
 import NotFound from "pages/NotFound";
 
 const Player = () => {
+  const [video, setVideo] = useState();
   const params = useParams();
-  const video = videos.find((vid) => {
-    return vid.id === Number(params.id);
-  });
+
+  useEffect(() => {
+    fetch(
+      `https://my-json-server.typicode.com/Felipe-Arceno/CinteTag-JSON-api/videos?id=${params.id}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setVideo(...data);
+      });
+  }, []);
 
   if (!video) {
     return <NotFound />;

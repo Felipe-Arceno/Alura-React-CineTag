@@ -1,11 +1,23 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Banner from "components/Banner";
 import Title from "components/Title";
 import Card from "components/Card";
-import videos from "json/db.json";
 import styles from "./Home.module.css";
 
 const Home = () => {
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    fetch(
+      "https://my-json-server.typicode.com/Felipe-Arceno/CinteTag-JSON-api/videos"
+    )
+      .then((resposta) => resposta.json())
+      .then((data) => {
+        setVideos(data);
+      });
+  }, []);
+
+  console.log(videos);
   return (
     <Fragment>
       <Banner image="Home" />
